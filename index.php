@@ -12,11 +12,15 @@
     <title>Majomar</title>
 </head>
 <body>
+    <?php 
+        echo "My first PHP script!";
+    ?> 
     <div id="headbar">
         <p id="nome">MajomaR</p>
         <div id="auth_btn">
             <a href=""><p>Accedi</p></a>
         </div>
     </div>
+    
 </body>
 </html>
