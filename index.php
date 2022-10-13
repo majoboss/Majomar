@@ -13,7 +13,7 @@
 </head>
 <body>
     <?php 
-        echo "My first PHP script!";
+        echo "Prova";
     ?> 
     <div id="headbar">
         <p id="nome">MajomaR</p>
