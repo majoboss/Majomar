@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Ott 14, 2022 alle 09:56
--- Versione del server: 10.4.20-MariaDB
--- Versione PHP: 8.0.9
+-- Creato il: Ott 18, 2022 alle 20:46
+-- Versione del server: 10.4.24-MariaDB
+-- Versione PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `navigazione`
+-- Database: `registro_navigazione`
 --
 
 -- --------------------------------------------------------
@@ -85,7 +85,8 @@ CREATE TABLE `porto` (
 
 CREATE TABLE `porto_pa` (
   `codice_porto` char(5) NOT NULL,
-  `codice_viaggio` char(5) NOT NULL
+  `codice_viaggio` char(5) NOT NULL,
+  `tipo` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -113,10 +114,8 @@ CREATE TABLE `trasmissione` (
 
 CREATE TABLE `viaggio` (
   `codice_viaggio` char(5) NOT NULL,
-  `porto_p_a` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`porto_p_a`)),
   `data_ora_p_a` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`data_ora_p_a`)),
   `peso_carico` float DEFAULT NULL,
-  `elenco_personale` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`elenco_personale`)),
   `codice_nave` char(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
