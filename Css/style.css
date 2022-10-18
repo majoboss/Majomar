@@ -1,6 +1,4 @@
-/*
-  Start Home
-*/
+
 
 h1,h2,h3,h4,h5,h6,p{
     font-family: 'Poppins', sans-serif;
@@ -8,6 +6,12 @@ h1,h2,h3,h4,h5,h6,p{
 body{
     margin: 0;
 }
+
+/*
+  Start Headbar
+*/
+
+
 #headbar{
     background: #4242ff;
     background: linear-gradient(90deg, rgba(66,66,255,1) 30%, rgba(0,212,255,1) 100%);
@@ -57,5 +61,182 @@ body{
 }
 
 /*
-  Finish Home
+  Finish Headbar
+*/
+
+
+/*
+  Start Card
+*/
+
+.card{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    height: 200px;
+    border-radius: 15px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.153);
+    margin-top: 30px;
+}
+
+#card_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.card_section{
+    display: flex;
+    flex: 1;
+    margin: 20px;
+    flex-direction: column;
+}
+
+.card_section p,h2,h5,h3{
+    margin: 0;
+    font-weight: 500;
+}
+
+.card_section p{
+    opacity: .9;
+}
+
+
+
+.card_section h5{
+   margin-top: -10px;
+   opacity: .7;
+}
+
+
+.card_section h2{
+    font-weight: 600;
+}
+
+.card_section span{
+    font-size: 15px;
+    font-weight: 500;
+    color: #4242ff;
+}
+
+.card_sec_btn{
+    display: flex;
+    flex-direction: row;
+    height: 35px;
+    width: 150px;
+    border-radius: 7.5px;
+    background-color: #4242ffd0;
+    margin-top: 18px;
+    color: white;
+}
+
+.card_sec_btn p{
+    padding-top: 5px;
+    padding-left: 10px;
+    font-weight: 300;
+}
+
+.card img{
+    width: 20px;
+    height: 20px;
+    margin-top: 7px;
+    margin-left: 10px;
+}
+
+.sec_time{
+    background-color: white;
+    color: #4242ff;
+    border:1.5px solid #4242ff;
+    margin-left: -75px;
+    width: max-content;
+    padding-right: 12px;
+}
+
+.sec_time p{
+    font-weight: 500;
+}
+
+.posti_card{
+    color: #00ec56;
+    opacity: 1 !important;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.posti_card h5{
+   height: 3px;
+    
+}
+
+.posti_card img{
+    height: 15px;
+    width: 15px;
+    margin-right: 3px;
+    margin-left: 0;
+ }
+
+ .select_button{
+    height: 35px;
+    background: #4242ff;
+    background: linear-gradient(90deg, rgba(66,66,255,1) 30%, rgb(0, 187, 255) 100%);
+    border-radius: 7.5px;
+    margin-top: 42px;
+ }
+
+ .select_button h3{
+    text-align: center;
+    padding-top: 3.5px;
+    color: white;
+ }
+
+
+
+
+
+
+
+
+/*
+  Finish Card
+*/
+
+/*
+
+<div class="card">
+            <div class="card_section">
+                <p>Partenza</p>
+                <h2>Palermo</h2>
+                <h5>Porto Palermo</h5>
+                <h2>06:55<span> 19 ott</span></h2>
+                <div class="card_sec_btn">
+                    <img src="../Assets/info_icon.png" alt="">
+                    <p>Info viaggio</p>
+                </div>
+            </div>
+            <div class="card_section">
+                <p>Arrivo</p>
+                <h2>Genova</h2>
+                <h5>Porto Genova</h5>
+                <h2>23:55<span> 19 ott</span></h2>
+                <div class="card_sec_btn sec_time">
+                    <img src="../Assets/clock_icon.png" alt="">
+                    <p>Durata 17h</p>
+                </div>
+            </div>
+            <div class="card_section last_sec">
+                <p>Prezzo totale</p>
+                <h2>€ 39.90</h2>
+                <div class="posti_card">
+                    <img src="../Assets/pearson_icon.png" alt="">
+                    <h5>Posti disponibili</h5>
+                 </div>
+                 <div class="select_button">
+                    <h3>Seleziona</h3>
+                 </div>
+            </div>
+        </div>
+
 */
