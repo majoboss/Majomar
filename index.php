@@ -13,7 +13,7 @@
 </head>
 <body>
     <?php 
-        echo "Prova";
+        echo "Gabri";
     ?> 
     <div id="headbar">
         <p id="nome">MajomaR</p>
