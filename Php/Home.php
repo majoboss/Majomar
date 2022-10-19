@@ -13,21 +13,37 @@ $web_page = str_replace('<headbar/>', $headbar , $web_page);
 $cards = '';
 
 
-$sql_seleziona = "SELECT * FROM viaggio";
+$sql_seleziona_porti_partenza = "SELECT * FROM ((viaggio INNER JOIN porto_pa ON viaggio.codice_viaggio=porto_pa.codice_viaggio) INNER JOIN porto ON porto_pa.codice_porto=porto.codice_porto) HAVING tipo='partenza' ORDER BY porto_pa.codice_viaggio";
+$sql_seleziona_porti_arrivo = "SELECT * FROM ((viaggio INNER JOIN porto_pa ON viaggio.codice_viaggio=porto_pa.codice_viaggio) INNER JOIN porto ON porto_pa.codice_porto=porto.codice_porto) HAVING tipo='arrivo' ORDER BY porto_pa.codice_viaggio";
+$sql_seleziona_tutto = "SELECT * FROM viaggio ORDER BY codice_viaggio";
 
-if($result = $connessione->query($sql_seleziona))
+$result_all = $connessione->query($sql_seleziona_tutto);
+$result_porti_p = $connessione->query($sql_seleziona_porti_partenza);
+$result_porti_a = $connessione->query($sql_seleziona_porti_arrivo);
+
+if($result_all && $result_porti_p && $result_porti_a)
 {
-    if($result->num_rows>0){
-        while($row=$result->fetch_assoc())
+    if($result_all ->num_rows > 0 && $result_porti_p->num_rows > 0 && $result_porti_a->num_rows > 0){
+        while($row=$result_all->fetch_assoc())
         {
+            $porti_p=$result_porti_p->fetch_assoc();
+            $porti_a=$result_porti_a->fetch_assoc();
+
             $data_ora_p_a = json_decode($row["data_ora_p_a"], true);
             $prezzo = $row["prezzo"];
+            
+            $datetime_part = date_create($data_ora_p_a["ora_part"]);
+
+            $datetime_arri = date_create($data_ora_p_a["ora_arri"]);
+           
+            $durata = date_diff($datetime_part,$datetime_arri)->format("Durata %h h");
+
 
             $cards.='<div class="card">
                 <div class="card_section">
                     <p>Partenza</p>
-                    <h2>Palermo</h2>
-                    <h5>Porto Palermo</h5>
+                    <h2>'. $porti_p["citta"].'</h2>
+                    <h5>'. $porti_p["nome_porto"].'</h5>
                     <h2>'.$data_ora_p_a["ora_part"].'<span> '.$data_ora_p_a["data_part"].'</span></h2>
                     <a class="card_sec_btn" href="">
                         <img src="../Assets/info_icon.png" alt="">
@@ -35,13 +51,13 @@ if($result = $connessione->query($sql_seleziona))
                     </a>
                     <div class="card_sec_btn sec_time">
                         <img src="../Assets/clock_icon.png" alt="">
-                        <p>Durata 17h</p>
+                        <p>'. $durata .'</p>
                     </div>
                 </div>
                 <div class="card_section">
                     <p>Arrivo</p>
-                    <h2>Genova</h2>
-                    <h5>Porto Genova</h5>
+                    <h2>'. $porti_a["citta"].'</h2>
+                    <h5>'. $porti_a["nome_porto"].'</h5>
                     <h2>'.$data_ora_p_a["ora_arri"].'<span> '.$data_ora_p_a["data_arri"].'</span></h2>
                 </div>
                 <div class="card_section last_sec">
@@ -58,16 +74,19 @@ if($result = $connessione->query($sql_seleziona))
             </div>
             ';
         }
-    }
+    }else
+        echo "Errore";
 
 }
 else
     echo "Impossibile reperire i dati";
 
 
+
+
 $home = str_replace('<cards/>', $cards , $home);
 
 
-echo str_replace('<contenuto/>', $home , $web_page);;
+echo str_replace('<contenuto/>', $home , $web_page);
 
 ?>
