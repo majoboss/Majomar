@@ -2,7 +2,6 @@
 
 include "./Back/Database.php";
 
-
 $web_page = file_get_contents('../Html/Template.html');
 
 $headbar = file_get_contents('../Html/Headbar.html');
@@ -12,6 +11,21 @@ $home = file_get_contents('../Html/Home.html');
 $web_page = str_replace('<headbar/>', $headbar , $web_page);
 
 $cards = '';
+
+
+$sql_seleziona = "SELECT * FROM viaggio";
+
+if($result = $connessione->query($sql_seleziona))
+{
+    
+
+}
+else
+    echo "Impossibile reperire i dati";
+
+
+
+
 
 for($i=0;$i<10;$i++){
     $cards.='<div class="card">

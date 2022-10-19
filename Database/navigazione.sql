@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Ott 18, 2022 alle 20:46
--- Versione del server: 10.4.24-MariaDB
--- Versione PHP: 8.1.6
+-- Creato il: Ott 19, 2022 alle 12:02
+-- Versione del server: 10.4.20-MariaDB
+-- Versione PHP: 8.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `registro_navigazione`
+-- Database: `navigazione`
 --
 
 -- --------------------------------------------------------
@@ -47,6 +47,14 @@ CREATE TABLE `navi` (
   `potenza_motori` float DEFAULT NULL,
   `posti_occupabili` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `navi`
+--
+
+INSERT INTO `navi` (`codice_nave`, `nome`, `stazza`, `lunghezza`, `anno_costruzione`, `potenza_motori`, `posti_occupabili`) VALUES
+('n0001', 'La Blanca', 2000, 300, 1999, 42, 100),
+('n0002', 'Golden Fleece', 1500, 350, 2005, 30, 50);
 
 -- --------------------------------------------------------
 
@@ -118,6 +126,18 @@ CREATE TABLE `viaggio` (
   `peso_carico` float DEFAULT NULL,
   `codice_nave` char(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `viaggio`
+--
+
+INSERT INTO `viaggio` (`codice_viaggio`, `data_ora_p_a`, `peso_carico`, `codice_nave`) VALUES
+('00001', '{\r\n  \"data_part\":\"20 Ottobre\",\r\n  \"data_arri\": \"20 Ottobre\",\r\n  \"ora_part\": \"06:35\",\r\n  \"ora_arri\":\"23:00\" \r\n}', 1300, 'n0001'),
+('00002', '{\r\n  \"data_part\": \"10 Ottobre\",\r\n  \"data_arri\": \"10 Ottbre\",\r\n  \"ora_part\": \"07:40\",\r\n  \"ora_arri\": \"20:00\"\r\n}', 1000, 'n0002'),
+('00003', '{\r\n  \"data_part\": \"15 Ottobre\",\r\n  \"data_arri\": \"15 Ottbre\",\r\n  \"ora_part\": \"09:00\",\r\n  \"ora_arri\": \"10:00\"\r\n}', 900, 'n0002'),
+('00004', '{\r\n  \"data_part\": \"4 Marzo\",\r\n  \"data_arri\": \"5 Marzo\",\r\n  \"ora_part\": \"09:00\",\r\n  \"ora_arri\": \"10:00\"\r\n}', 1500, 'n0002'),
+('00005', '{\r\n  \"data_part\": \"4 Novembre\",\r\n  \"data_arri\": \"4 Novembre\",\r\n  \"ora_part\": \"14:00\",\r\n  \"ora_arri\": \"19:00\"\r\n}', 1300, 'n0001'),
+('00006', '{\r\n  \"data_part\": \"1 Settembre\",\r\n  \"data_arri\": \"1 Settembre\",\r\n  \"ora_part\": \"09:25\",\r\n  \"ora_arri\": \"18:00\"\r\n}', 1200, 'n0002');
 
 --
 -- Indici per le tabelle scaricate

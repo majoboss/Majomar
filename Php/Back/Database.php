@@ -7,7 +7,7 @@ $db = "navigazione";
 
 $connessione = new mysqli($host,$user,$passw,$db);
 
-if(!$connessione)
+if($connessione->connect_error)
 {
     die("Errore connessione");
 }
