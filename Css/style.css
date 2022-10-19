@@ -148,7 +148,9 @@ body{
     background-color: white;
     color: #4242ff;
     border:1.5px solid #4242ff;
-    margin-left: -75px;
+    position: absolute;
+    margin-top: 121.5px;
+    margin-left: 165px;
     width: max-content;
     padding-right: 12px;
 }

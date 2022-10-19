@@ -21,16 +21,16 @@ for($i=0;$i<10;$i++){
             <img src="../Assets/info_icon.png" alt="">
             <p>Info viaggio</p>
         </div>
+        <div class="card_sec_btn sec_time">
+            <img src="../Assets/clock_icon.png" alt="">
+            <p>Durata 17h</p>
+        </div>
     </div>
     <div class="card_section">
         <p>Arrivo</p>
         <h2>Genova</h2>
         <h5>Porto Genova</h5>
         <h2>23:55<span> 19 ott</span></h2>
-        <div class="card_sec_btn sec_time">
-            <img src="../Assets/clock_icon.png" alt="">
-            <p>Durata 17h</p>
-        </div>
     </div>
     <div class="card_section last_sec">
         <p>Prezzo totale</p>
