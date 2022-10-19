@@ -1,5 +1,8 @@
 <?php 
 
+include "./Back/Database.php";
+
+
 $web_page = file_get_contents('../Html/Template.html');
 
 $headbar = file_get_contents('../Html/Headbar.html');
