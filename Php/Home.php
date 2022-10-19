@@ -17,10 +17,10 @@ for($i=0;$i<10;$i++){
         <h2>Palermo</h2>
         <h5>Porto Palermo</h5>
         <h2>06:55<span> 19 ott</span></h2>
-        <div class="card_sec_btn">
+        <a class="card_sec_btn" href="">
             <img src="../Assets/info_icon.png" alt="">
             <p>Info viaggio</p>
-        </div>
+        </a>
         <div class="card_sec_btn sec_time">
             <img src="../Assets/clock_icon.png" alt="">
             <p>Durata 17h</p>
@@ -39,18 +39,17 @@ for($i=0;$i<10;$i++){
             <img src="../Assets/pearson_icon.png" alt="">
             <h5>Posti disponibili</h5>
          </div>
-         <div class="select_button">
+         <a class="select_button" href="">
             <h3>Seleziona</h3>
-         </div>
+         </a>
     </div>
 </div>
 ';
 }
 
 $home = str_replace('<cards/>', $cards , $home);
-$web_page = str_replace('<contenuto/>', $home , $web_page);
 
 
-echo $web_page;
+echo str_replace('<contenuto/>', $home , $web_page);;
 
 ?>
