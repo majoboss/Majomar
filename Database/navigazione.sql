@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Ott 19, 2022 alle 11:38
--- Versione del server: 10.4.20-MariaDB
--- Versione PHP: 8.0.9
+-- Creato il: Ott 24, 2022 alle 16:09
+-- Versione del server: 10.4.24-MariaDB
+-- Versione PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -163,12 +163,12 @@ CREATE TABLE `viaggio` (
 --
 
 INSERT INTO `viaggio` (`codice_viaggio`, `data_ora_p_a`, `peso_carico`, `prezzo`, `codice_nave`) VALUES
-('00001', '{\n  \"data_part\":\"20 Ottobre\",\n  \"data_arri\": \"20 Ottobre\",\n  \"ora_part\": \"06:35\",\n  \"ora_arri\":\"23:00\" \n}', 1300, 39.99, 'n0001'),
-('00002', '{\r\n  \"data_part\": \"10 Ottobre\",\r\n  \"data_arri\": \"10 Ottbre\",\r\n  \"ora_part\": \"07:40\",\r\n  \"ora_arri\": \"20:00\"\r\n}', 1000, 28.99, 'n0002'),
-('00003', '{\r\n  \"data_part\": \"15 Ottobre\",\r\n  \"data_arri\": \"15 Ottbre\",\r\n  \"ora_part\": \"09:00\",\r\n  \"ora_arri\": \"10:00\"\r\n}', 900, 19.99, 'n0002'),
-('00004', '{\r\n  \"data_part\": \"4 Marzo\",\r\n  \"data_arri\": \"5 Marzo\",\r\n  \"ora_part\": \"09:00\",\r\n  \"ora_arri\": \"10:00\"\r\n}', 1500, 59.99, 'n0002'),
-('00005', '{\r\n  \"data_part\": \"4 Novembre\",\r\n  \"data_arri\": \"4 Novembre\",\r\n  \"ora_part\": \"14:00\",\r\n  \"ora_arri\": \"19:00\"\r\n}', 1300, 39.99, 'n0001'),
-('00006', '{\r\n  \"data_part\": \"1 Settembre\",\r\n  \"data_arri\": \"1 Settembre\",\r\n  \"ora_part\": \"09:25\",\r\n  \"ora_arri\": \"18:00\"\r\n}', 1200, 44.99, 'n0002');
+('00001', '{\n  \"data_part\":\"2022/10/20\",\n  \"data_arri\": \"2022/10/20\",\n  \"ora_part\": \"06:35\",\n  \"ora_arri\":\"23:00\" \n}', 1300, 39.99, 'n0001'),
+('00002', '{\n  \"data_part\": \"2022/10/10\",\n  \"data_arri\": \"2022/10/12\",\n  \"ora_part\": \"07:40\",\n  \"ora_arri\": \"20:00\"\n}', 1000, 28.99, 'n0002'),
+('00003', '{\n  \"data_part\": \"2022/10/15\",\n  \"data_arri\": \"2022/10/15\",\n  \"ora_part\": \"09:00\",\n  \"ora_arri\": \"10:00\"\n}', 900, 19.99, 'n0002'),
+('00004', '{\n  \"data_part\": \"2022/03/04\",\n  \"data_arri\": \"2022/03/05\",\n  \"ora_part\": \"09:00\",\n  \"ora_arri\": \"10:00\"\n}', 1500, 59.99, 'n0002'),
+('00005', '{\n  \"data_part\": \"2022/11/04\",\n  \"data_arri\": \"2022/11/04\",\n  \"ora_part\": \"14:00\",\n  \"ora_arri\": \"19:00\"\n}', 1300, 39.99, 'n0001'),
+('00006', '{\n  \"data_part\": \"2022/09/01\",\n  \"data_arri\": \"2022/09/01\",\n  \"ora_part\": \"09:25\",\n  \"ora_arri\": \"18:00\"\n}', 1200, 44.99, 'n0002');
 
 --
 -- Indici per le tabelle scaricate
