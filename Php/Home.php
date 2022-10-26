@@ -40,19 +40,19 @@ if($result_all && $result_porti_p && $result_porti_a)
             $date_part = date_create($data_ora_p_a["data_part"]);
             $date_arr = date_create($data_ora_p_a["data_arri"]);
 
-            $complete_part =  $datetime_part->format("H:m") . " ". $date_part->format("yy/m/d") . " ";
-            $complete_arri = $datetime_arri->format("H:m") . " ". $date_arr->format("yy/m/d") . " ";
+            $complete_part =  $datetime_part->format("H:i") . " ". $date_part->format("Y/n/d") . " ";
+            $complete_arri = $datetime_arri->format("H:i") . " ". $date_arr->format("Y/n/d") . " ";
+
 
             $complete_partenza = new DateTime($complete_part);
             $complete_arrivo = new DateTime($complete_arri);
 
-
             $durata = date_diff($complete_partenza,$complete_arrivo);
 
             if($durata->format("%d") > 0)
-                $durata = $durata->format("Durata %d g %H h");
+                $durata = $durata->format("Durata %d g %H h %i m");
             else
-                $durata = $durata->format("Durata %H h");
+                $durata = $durata->format("Durata %H h %i m");
             
             
             $time_part = strtotime($data_ora_p_a["data_part"]);
