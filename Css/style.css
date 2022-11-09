@@ -209,6 +209,12 @@ a{
   Start Auth
 */
 
+#auth{
+    display: flex;
+    justify-content: center;
+    padding-top: 15%;
+}
+
 #authContainer{
     width: 190px;
     background-color: white;
@@ -225,7 +231,7 @@ a{
     margin-bottom: 10px;
 }
 
-#authContainer button{
+#authBtn{
     font-family: 'Poppins';
     font-weight: 800;
     margin-bottom: 10px;
@@ -236,13 +242,13 @@ a{
     border:0;
     color: white;
     height: 30px;
-    transition: 0.5s;
+    transition: 0.2s;
+    box-shadow: 0px 0px 0px black;
 }
 
-#authContainer button:hover{
-    background-color: red;
-}
-
+#authBtn:hover{
+    box-shadow: 0px 0px 5   px rgba(2, 0, 114, 0.363);
+} 
 
 /*
   Finish Auth
