@@ -3,15 +3,12 @@
 include "./Back/Database.php";
 
 $web_page = file_get_contents('../Html/Template.html');
-
 $headbar = file_get_contents('../Html/Headbar.html');
-
 $home = file_get_contents('../Html/Home.html');
 
 $web_page = str_replace('<headbar/>', $headbar , $web_page);
 
 $cards = '';
-
 
 $sql_seleziona_porti_partenza = "SELECT * FROM ((viaggio INNER JOIN porto_pa ON viaggio.codice_viaggio=porto_pa.codice_viaggio) INNER JOIN porto ON porto_pa.codice_porto=porto.codice_porto) HAVING tipo='partenza' ORDER BY porto_pa.codice_viaggio";
 $sql_seleziona_porti_arrivo = "SELECT * FROM ((viaggio INNER JOIN porto_pa ON viaggio.codice_viaggio=porto_pa.codice_viaggio) INNER JOIN porto ON porto_pa.codice_porto=porto.codice_porto) HAVING tipo='arrivo' ORDER BY porto_pa.codice_viaggio";
@@ -21,8 +18,6 @@ $result_all = $connessione->query($sql_seleziona_tutto);
 $result_porti_p = $connessione->query($sql_seleziona_porti_partenza);
 $result_porti_a = $connessione->query($sql_seleziona_porti_arrivo);
 $formattatore = new IntlDateFormatter('it_IT',IntlDateFormatter::FULL,IntlDateFormatter::FULL,null,null," dd MMM ");
-    
-
     
 if($result_all && $result_porti_p && $result_porti_a)
 {
@@ -43,7 +38,6 @@ if($result_all && $result_porti_p && $result_porti_a)
             $complete_part =  $datetime_part->format("H:i") . " ". $date_part->format("Y/n/d") . " ";
             $complete_arri = $datetime_arri->format("H:i") . " ". $date_arr->format("Y/n/d") . " ";
 
-
             $complete_partenza = new DateTime($complete_part);
             $complete_arrivo = new DateTime($complete_arri);
 
@@ -53,11 +47,9 @@ if($result_all && $result_porti_p && $result_porti_a)
                 $durata = $durata->format("Durata %d g %H h %i m");
             else
                 $durata = $durata->format("Durata %H h %i m");
-            
-            
+                        
             $time_part = strtotime($data_ora_p_a["data_part"]);
             $time_arr = strtotime($data_ora_p_a["data_arri"]);
-
 
             $cards.='<div class="card">
                 <div class="card_section">
@@ -96,16 +88,11 @@ if($result_all && $result_porti_p && $result_porti_a)
         }
     }else
         echo "Errore";
-
 }
 else
     echo "Impossibile reperire i dati";
 
-
-
-
 $home = str_replace('<cards/>', $cards , $home);
-
 
 echo str_replace('<contenuto/>', $home , $web_page);
 

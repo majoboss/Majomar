@@ -10,4 +10,5 @@ $web_page = str_replace('<headbar/>', $headbar , $web_page);
 
 echo str_replace('<contenuto/>', $auth , $web_page);
 
+
 ?>
