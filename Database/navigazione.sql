@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Ott 24, 2022 alle 16:09
--- Versione del server: 10.4.24-MariaDB
--- Versione PHP: 8.1.6
+-- Creato il: Nov 09, 2022 alle 12:31
+-- Versione del server: 10.4.20-MariaDB
+-- Versione PHP: 8.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -147,6 +147,30 @@ CREATE TABLE `trasmissione` (
 -- --------------------------------------------------------
 
 --
+-- Struttura della tabella `utenti`
+--
+
+CREATE TABLE `utenti` (
+  `id_utente` int(3) NOT NULL,
+  `nome` varchar(255) NOT NULL,
+  `cognome` varchar(255) NOT NULL,
+  `telefono` varchar(20) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `utenti`
+--
+
+INSERT INTO `utenti` (`id_utente`, `nome`, `cognome`, `telefono`, `username`, `password`) VALUES
+(0, '', '', '', 'admin', 'admin'),
+(1, 'Marco', 'Rossi', '4035065404', 'marcorossi', 'Marco.Rossi@'),
+(2, 'Giovanni', 'Gialli', '4593045964', 'giovannigialli', 'Giovanni.Gialli@');
+
+-- --------------------------------------------------------
+
+--
 -- Struttura della tabella `viaggio`
 --
 
@@ -212,6 +236,14 @@ ALTER TABLE `porto_pa`
 ALTER TABLE `trasmissione`
   ADD PRIMARY KEY (`codice_trasmissione`),
   ADD KEY `codice_viaggio` (`codice_viaggio`);
+
+--
+-- Indici per le tabelle `utenti`
+--
+ALTER TABLE `utenti`
+  ADD PRIMARY KEY (`id_utente`),
+  ADD UNIQUE KEY `telefono` (`telefono`),
+  ADD UNIQUE KEY `email` (`username`);
 
 --
 -- Indici per le tabelle `viaggio`

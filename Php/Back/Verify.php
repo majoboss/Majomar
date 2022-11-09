@@ -1,6 +1,6 @@
 <?php
 
-    include "./Back/Database.php";
+    include "Database.php";
 
     $username = $_POST["username"];
     $password = $_POST["password"];
@@ -15,7 +15,6 @@
         }
         else
         {
-            header('Location: ../Php/Home.php');
             echo "Account not exist";
         }
     }
