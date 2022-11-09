@@ -206,39 +206,44 @@ a{
 */
 
 /*
+  Start Auth
+*/
 
-<div class="card">
-            <div class="card_section">
-                <p>Partenza</p>
-                <h2>Palermo</h2>
-                <h5>Porto Palermo</h5>
-                <h2>06:55<span> 19 ott</span></h2>
-                <div class="card_sec_btn">
-                    <img src="../Assets/info_icon.png" alt="">
-                    <p>Info viaggio</p>
-                </div>
-            </div>
-            <div class="card_section">
-                <p>Arrivo</p>
-                <h2>Genova</h2>
-                <h5>Porto Genova</h5>
-                <h2>23:55<span> 19 ott</span></h2>
-                <div class="card_sec_btn sec_time">
-                    <img src="../Assets/clock_icon.png" alt="">
-                    <p>Durata 17h</p>
-                </div>
-            </div>
-            <div class="card_section last_sec">
-                <p>Prezzo totale</p>
-                <h2>€ 39.90</h2>
-                <div class="posti_card">
-                    <img src="../Assets/pearson_icon.png" alt="">
-                    <h5>Posti disponibili</h5>
-                 </div>
-                 <div class="select_button">
-                    <h3>Seleziona</h3>
-                 </div>
-            </div>
-        </div>
+#authContainer{
+    width: 190px;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.527);
+    border-radius: 15px;
+    padding: 20px;
+    padding-top: 1px;
+}
 
+#authContainer input{
+    border-radius: 5px;
+    font-family: 'Poppins';
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+#authContainer button{
+    font-family: 'Poppins';
+    font-weight: 800;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 187px;
+    background: #4242ff;
+    background: linear-gradient(90deg, rgba(66,66,255,1) 30%, rgb(0, 187, 255) 100%);
+    border:0;
+    color: white;
+    height: 30px;
+    transition: 0.5s;
+}
+
+#authContainer button:hover{
+    background-color: red;
+}
+
+
+/*
+  Finish Auth
 */
