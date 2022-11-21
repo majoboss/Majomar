@@ -11,11 +11,14 @@
     {
         if($sucessful->num_rows > 0)
         {
-            header('Location: ../Php/Home.php');
+            header('Location: ../Dashboard.php');
         }
         else
         {
-            echo "Account not exist";
+            echo "<script type='text/javascript'>
+                alert('Username o password non corretti!');
+                window.location.href='../Auth.php';
+            </script>";
         }
     }
     else

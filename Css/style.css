@@ -229,6 +229,7 @@ a{
     font-family: 'Poppins';
     font-weight: 800;
     margin-bottom: 10px;
+    width: 180px;
 }
 
 #authBtn{
