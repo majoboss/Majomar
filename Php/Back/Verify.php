@@ -11,7 +11,7 @@
     {
         if($sucessful->num_rows > 0)
         {
-            header('Location: ../Dashboard.php');
+            header('Location: ../Navi.php');
         }
         else
         {

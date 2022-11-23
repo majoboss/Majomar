@@ -7,6 +7,17 @@ body{
     margin: 0;
 }
 
+span{
+    color: black;
+    font-weight: bold;
+}
+
+i{
+    color: #4242ff;
+}
+
+
+
 /*
   Start Headbar
 */
