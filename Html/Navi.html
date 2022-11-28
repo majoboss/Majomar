@@ -1,3 +1,38 @@
 <div>
-    <h1>Navi</h1>
+    <table class="table align-middle mb-0 bg-white">
+        <thead class="bg-light">
+          <tr>
+            <th>Nome</th>
+            <th>Anno costruzione</th>
+            <th>Posti</th>
+            <th>Lunghezza</th>
+            <th>Stazza</th>
+            <th>Potenza motori</th>
+            <th>Azioni</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <righe />
+        </tbody>
+      </table>
+      <button class="addButton" onclick="add()">
+        <i class="fa-solid fa-plus fa-fw me-3"></i>
+      </button>
+      <div style="display: flex; justify-content: center; margin-top: 150px;">
+      <form id="formNavi" class="form hide" action="../Php/Back/Insert.php" method="post">
+        <h3 style="color: black; margin-bottom: 20px; font-weight: bold;">Aggiungi</h3>
+        <div>
+            <input required placeholder="Nome" type="text" name="Nome" id="">
+            <input required placeholder="Anno costruzione" name="Anno costruzione" type="number" min="1900" max="2099" step="1" />
+            <input required placeholder="Posti" type="number" name="Posti" id="">
+            <input required placeholder="Lunghezza" type="number" name="Lunghezza" id="">
+            <input required placeholder="Stazza" type="number" name="Stazza" id="">
+            <input required placeholder="Potenza motori" type="number" name="Potenza motori" id="">
+            <button type="submit">Invia</button>
+        </div>
+      </form>
+     </div>
 </div>
+
+<script src="../JS/formNavi.js"></script>
