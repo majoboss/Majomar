@@ -1,5 +1,7 @@
 <?php
 
+    session_start();
+
     include "Database.php";
 
     $username = $_POST["username"];
@@ -11,6 +13,8 @@
     {
         if($sucessful->num_rows > 0)
         {
+            $_SESSION["Username"] = $username;
+            $_SESSION["Password"] = $password;
             header('Location: ../Navi.php');
         }
         else
