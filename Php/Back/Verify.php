@@ -11,14 +11,14 @@
     {
         if($sucessful->num_rows > 0)
         {
-            $_SESSION["user"] = $username;
-            $_SESSION["passw"] = $password;
-            
-            header('Location: ../Php/Home.php');
+            header('Location: ../Navi.php');
         }
         else
         {
-            header('Location: ../Php/Home.php');
+            echo "<script type='text/javascript'>
+                alert('Username o password non corretti!');
+                window.location.href='../Auth.php';
+            </script>";
         }
     }
     else

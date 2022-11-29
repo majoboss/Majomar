@@ -7,6 +7,17 @@ body{
     margin: 0;
 }
 
+span{
+    color: black;
+    font-weight: bold;
+}
+
+i{
+    color: #4242ff;
+}
+
+
+
 /*
   Start Headbar
 */
@@ -229,6 +240,7 @@ a{
     font-family: 'Poppins';
     font-weight: 800;
     margin-bottom: 10px;
+    width: 180px;
 }
 
 #authBtn{
@@ -252,4 +264,64 @@ a{
 
 /*
   Finish Auth
+*/
+
+/*
+  Start Dashboard
+*/
+
+
+.addButton{
+    border: 0;
+    background-color: #4242ff41;
+    border-radius: 5px;
+    margin-top: 10px;
+    float: right;
+}
+
+.addButton:hover{
+    background-color: #4242ff65;
+}
+
+.form{
+    width: 730px;
+    margin: 0;
+    background-color: white;
+    padding: 60px;
+    border-radius: 25px;
+    box-shadow: 0px 7px 15px rgba(0, 0, 0, 0.137);
+}
+
+.hide{
+    display: none;
+}
+
+.form input{
+    border-radius: 5px;
+    font-family: 'Poppins';
+    font-weight: 800;
+    margin-bottom: 10px;
+    width: 180px;
+    margin-right: 20px;
+}
+
+.form button{
+    font-family: 'Poppins';
+    font-weight: 800;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 180px;
+    background: #4242ff;
+    background: linear-gradient(90deg, rgba(66,66,255,1) 30%, rgb(0, 187, 255) 100%);
+    border:0;
+    color: white;
+    height: 30px;
+    transition: 0.2s;
+    box-shadow: 0px 0px 0px black;
+    margin-left: 408px;
+
+}
+
+/*
+  Finish Dashboard
 */
