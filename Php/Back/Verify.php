@@ -11,11 +11,14 @@
     {
         if($sucessful->num_rows > 0)
         {
+            $_SESSION["user"] = $username;
+            $_SESSION["passw"] = $password;
+            
             header('Location: ../Php/Home.php');
         }
         else
         {
-            echo "Account not exist";
+            header('Location: ../Php/Home.php');
         }
     }
     else
