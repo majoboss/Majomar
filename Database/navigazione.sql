@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Nov 09, 2022 alle 12:31
+-- Creato il: Nov 30, 2022 alle 11:37
 -- Versione del server: 10.4.20-MariaDB
 -- Versione PHP: 8.0.9
 
@@ -39,8 +39,8 @@ CREATE TABLE `impiego` (
 --
 
 CREATE TABLE `navi` (
-  `codice_nave` char(5) NOT NULL,
-  `nome` varchar(20) DEFAULT NULL,
+  `codice_nave` int(11) NOT NULL,
+  `nome` varchar(255) DEFAULT NULL,
   `stazza` float DEFAULT NULL,
   `lunghezza` float DEFAULT NULL,
   `anno_costruzione` year(4) DEFAULT NULL,
@@ -53,8 +53,8 @@ CREATE TABLE `navi` (
 --
 
 INSERT INTO `navi` (`codice_nave`, `nome`, `stazza`, `lunghezza`, `anno_costruzione`, `potenza_motori`, `posti_occupabili`) VALUES
-('n0001', 'La Blanca', 2000, 300, 1999, 42, 100),
-('n0002', 'Golden Fleece', 1500, 350, 2005, 30, 50);
+(1, 'La Blanca', 2000, 300, 1999, 42, 100),
+(2, 'Golden Fleece', 1500, 350, 2005, 30, 50);
 
 -- --------------------------------------------------------
 
@@ -134,7 +134,7 @@ INSERT INTO `porto_pa` (`codice_porto`, `codice_viaggio`, `tipo`) VALUES
 --
 
 CREATE TABLE `trasmissione` (
-  `codice_trasmissione` char(5) NOT NULL,
+  `codice_trasmissione` int(5) NOT NULL,
   `latitudine` float DEFAULT NULL,
   `longitudine` float DEFAULT NULL,
   `data_ora` datetime DEFAULT NULL,
@@ -179,20 +179,20 @@ CREATE TABLE `viaggio` (
   `data_ora_p_a` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`data_ora_p_a`)),
   `peso_carico` float DEFAULT NULL,
   `prezzo` float NOT NULL,
-  `codice_nave` char(5) DEFAULT NULL
+  `codice_navi` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `viaggio`
 --
 
-INSERT INTO `viaggio` (`codice_viaggio`, `data_ora_p_a`, `peso_carico`, `prezzo`, `codice_nave`) VALUES
-('00001', '{\n  \"data_part\":\"2022/10/20\",\n  \"data_arri\": \"2022/10/20\",\n  \"ora_part\": \"06:35\",\n  \"ora_arri\":\"23:00\" \n}', 1300, 39.99, 'n0001'),
-('00002', '{\n  \"data_part\": \"2022/10/10\",\n  \"data_arri\": \"2022/10/12\",\n  \"ora_part\": \"07:40\",\n  \"ora_arri\": \"20:00\"\n}', 1000, 28.99, 'n0002'),
-('00003', '{\n  \"data_part\": \"2022/10/15\",\n  \"data_arri\": \"2022/10/15\",\n  \"ora_part\": \"09:00\",\n  \"ora_arri\": \"10:00\"\n}', 900, 19.99, 'n0002'),
-('00004', '{\n  \"data_part\": \"2022/03/04\",\n  \"data_arri\": \"2022/03/05\",\n  \"ora_part\": \"09:00\",\n  \"ora_arri\": \"10:00\"\n}', 1500, 59.99, 'n0002'),
-('00005', '{\n  \"data_part\": \"2022/11/04\",\n  \"data_arri\": \"2022/11/04\",\n  \"ora_part\": \"14:00\",\n  \"ora_arri\": \"19:00\"\n}', 1300, 39.99, 'n0001'),
-('00006', '{\n  \"data_part\": \"2022/09/01\",\n  \"data_arri\": \"2022/09/01\",\n  \"ora_part\": \"09:25\",\n  \"ora_arri\": \"18:00\"\n}', 1200, 44.99, 'n0002');
+INSERT INTO `viaggio` (`codice_viaggio`, `data_ora_p_a`, `peso_carico`, `prezzo`, `codice_navi`) VALUES
+('00001', '{\n  \"data_part\":\"2022/10/20\",\n  \"data_arri\": \"2022/10/20\",\n  \"ora_part\": \"06:35\",\n  \"ora_arri\":\"23:00\" \n}', 1300, 39.99, 1),
+('00002', '{\n  \"data_part\": \"2022/10/10\",\n  \"data_arri\": \"2022/10/12\",\n  \"ora_part\": \"07:40\",\n  \"ora_arri\": \"20:00\"\n}', 1000, 28.99, 2),
+('00003', '{\n  \"data_part\": \"2022/10/15\",\n  \"data_arri\": \"2022/10/15\",\n  \"ora_part\": \"09:00\",\n  \"ora_arri\": \"10:00\"\n}', 900, 19.99, 2),
+('00004', '{\n  \"data_part\": \"2022/03/04\",\n  \"data_arri\": \"2022/03/05\",\n  \"ora_part\": \"09:00\",\n  \"ora_arri\": \"10:00\"\n}', 1500, 59.99, 2),
+('00005', '{\n  \"data_part\": \"2022/11/04\",\n  \"data_arri\": \"2022/11/04\",\n  \"ora_part\": \"14:00\",\n  \"ora_arri\": \"19:00\"\n}', 1300, 39.99, 1),
+('00006', '{\n  \"data_part\": \"2022/09/01\",\n  \"data_arri\": \"2022/09/01\",\n  \"ora_part\": \"09:25\",\n  \"ora_arri\": \"18:00\"\n}', 1200, 44.99, 2);
 
 --
 -- Indici per le tabelle scaricate
@@ -250,7 +250,23 @@ ALTER TABLE `utenti`
 --
 ALTER TABLE `viaggio`
   ADD PRIMARY KEY (`codice_viaggio`),
-  ADD KEY `codice_nave` (`codice_nave`);
+  ADD KEY `codice_navi` (`codice_navi`);
+
+--
+-- AUTO_INCREMENT per le tabelle scaricate
+--
+
+--
+-- AUTO_INCREMENT per la tabella `navi`
+--
+ALTER TABLE `navi`
+  MODIFY `codice_nave` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT per la tabella `trasmissione`
+--
+ALTER TABLE `trasmissione`
+  MODIFY `codice_trasmissione` int(5) NOT NULL AUTO_INCREMENT;
 
 --
 -- Limiti per le tabelle scaricate
@@ -280,7 +296,7 @@ ALTER TABLE `trasmissione`
 -- Limiti per la tabella `viaggio`
 --
 ALTER TABLE `viaggio`
-  ADD CONSTRAINT `viaggio_ibfk_1` FOREIGN KEY (`codice_nave`) REFERENCES `navi` (`codice_nave`);
+  ADD CONSTRAINT `viaggio_ibfk_1` FOREIGN KEY (`codice_navi`) REFERENCES `navi` (`codice_nave`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
