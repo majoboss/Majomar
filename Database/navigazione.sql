@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Nov 30, 2022 alle 11:37
--- Versione del server: 10.4.20-MariaDB
--- Versione PHP: 8.0.9
+-- Creato il: Nov 30, 2022 alle 17:59
+-- Versione del server: 10.4.24-MariaDB
+-- Versione PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,8 +28,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `impiego` (
-  `codice_fiscale` char(5) NOT NULL,
-  `codice_viaggio` char(5) NOT NULL
+  `codice_fiscale` char(16) NOT NULL,
+  `codice_viaggio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -63,12 +63,12 @@ INSERT INTO `navi` (`codice_nave`, `nome`, `stazza`, `lunghezza`, `anno_costruzi
 --
 
 CREATE TABLE `personale` (
-  `codice_fiscale` char(5) NOT NULL,
-  `nome` varchar(20) DEFAULT NULL,
-  `cognome` varchar(20) DEFAULT NULL,
-  `citta_nascita` varchar(20) DEFAULT NULL,
+  `codice_fiscale` char(16) NOT NULL,
+  `nome` varchar(255) DEFAULT NULL,
+  `cognome` varchar(255) DEFAULT NULL,
+  `citta_nascita` varchar(255) DEFAULT NULL,
   `data_nascita` date DEFAULT NULL,
-  `ruolo` varchar(20) DEFAULT NULL
+  `ruolo` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -78,7 +78,7 @@ CREATE TABLE `personale` (
 --
 
 CREATE TABLE `porto` (
-  `codice_porto` char(5) NOT NULL,
+  `codice_porto` int(11) NOT NULL,
   `nome_porto` varchar(60) NOT NULL,
   `citta` varchar(60) DEFAULT NULL,
   `posti_barca` int(11) DEFAULT NULL,
@@ -91,11 +91,11 @@ CREATE TABLE `porto` (
 --
 
 INSERT INTO `porto` (`codice_porto`, `nome_porto`, `citta`, `posti_barca`, `latitudine`, `longitudine`) VALUES
-('p0001', 'Porto Palermo', 'Palermo', 200, 334, 334),
-('p0002', 'Porto Genova', 'Genova', 300, 334, 334),
-('p0003', 'Porto Venezia', 'Venezia', 270, 334, 334),
-('p0004', 'Porto Napoli', 'Napoli', 250, 334, 334),
-('p0005', 'Porto Civitavecchia', 'Civitavecchia', 290, 334, 334);
+(1, 'Porto Palermo', 'Palermo', 200, 334, 334),
+(2, 'Porto Genova', 'Genova', 300, 334, 334),
+(3, 'Porto Venezia', 'Venezia', 270, 334, 334),
+(4, 'Porto Napoli', 'Napoli', 250, 334, 334),
+(5, 'Porto Civitavecchia', 'Civitavecchia', 290, 334, 334);
 
 -- --------------------------------------------------------
 
@@ -104,9 +104,9 @@ INSERT INTO `porto` (`codice_porto`, `nome_porto`, `citta`, `posti_barca`, `lati
 --
 
 CREATE TABLE `porto_pa` (
-  `codice_porto` char(5) NOT NULL,
-  `codice_viaggio` char(5) NOT NULL,
-  `tipo` varchar(10) NOT NULL
+  `codice_porto` int(11) NOT NULL,
+  `codice_viaggio` int(11) NOT NULL,
+  `tipo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -114,18 +114,18 @@ CREATE TABLE `porto_pa` (
 --
 
 INSERT INTO `porto_pa` (`codice_porto`, `codice_viaggio`, `tipo`) VALUES
-('p0001', '00001', 'partenza'),
-('p0001', '00006', 'arrivo'),
-('p0002', '00002', 'partenza'),
-('p0003', '00003', 'partenza'),
-('p0003', '00004', 'partenza'),
-('p0003', '00005', 'arrivo'),
-('p0004', '00002', 'arrivo'),
-('p0004', '00005', 'partenza'),
-('p0005', '00001', 'arrivo'),
-('p0005', '00003', 'arrivo'),
-('p0005', '00004', 'arrivo'),
-('p0005', '00006', 'partenza');
+(1, 1, 'partenza'),
+(1, 6, 'arrivo'),
+(2, 2, 'partenza'),
+(3, 3, 'partenza'),
+(3, 4, 'partenza'),
+(3, 5, 'arrivo'),
+(4, 2, 'arrivo'),
+(4, 5, 'partenza'),
+(5, 1, 'arrivo'),
+(5, 3, 'arrivo'),
+(5, 4, 'arrivo'),
+(5, 6, 'partenza');
 
 -- --------------------------------------------------------
 
@@ -134,14 +134,14 @@ INSERT INTO `porto_pa` (`codice_porto`, `codice_viaggio`, `tipo`) VALUES
 --
 
 CREATE TABLE `trasmissione` (
-  `codice_trasmissione` int(5) NOT NULL,
+  `codice_trasmissione` int(11) NOT NULL,
   `latitudine` float DEFAULT NULL,
   `longitudine` float DEFAULT NULL,
   `data_ora` datetime DEFAULT NULL,
   `direzione` float DEFAULT NULL,
   `velocita` float DEFAULT NULL,
   `note_appendice` tinytext DEFAULT NULL,
-  `codice_viaggio` char(5) DEFAULT NULL
+  `codice_viaggio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -154,7 +154,7 @@ CREATE TABLE `utenti` (
   `id_utente` int(3) NOT NULL,
   `nome` varchar(255) NOT NULL,
   `cognome` varchar(255) NOT NULL,
-  `telefono` varchar(20) NOT NULL,
+  `telefono` varchar(30) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -175,7 +175,7 @@ INSERT INTO `utenti` (`id_utente`, `nome`, `cognome`, `telefono`, `username`, `p
 --
 
 CREATE TABLE `viaggio` (
-  `codice_viaggio` char(5) NOT NULL,
+  `codice_viaggio` int(11) NOT NULL,
   `data_ora_p_a` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`data_ora_p_a`)),
   `peso_carico` float DEFAULT NULL,
   `prezzo` float NOT NULL,
@@ -187,12 +187,12 @@ CREATE TABLE `viaggio` (
 --
 
 INSERT INTO `viaggio` (`codice_viaggio`, `data_ora_p_a`, `peso_carico`, `prezzo`, `codice_navi`) VALUES
-('00001', '{\n  \"data_part\":\"2022/10/20\",\n  \"data_arri\": \"2022/10/20\",\n  \"ora_part\": \"06:35\",\n  \"ora_arri\":\"23:00\" \n}', 1300, 39.99, 1),
-('00002', '{\n  \"data_part\": \"2022/10/10\",\n  \"data_arri\": \"2022/10/12\",\n  \"ora_part\": \"07:40\",\n  \"ora_arri\": \"20:00\"\n}', 1000, 28.99, 2),
-('00003', '{\n  \"data_part\": \"2022/10/15\",\n  \"data_arri\": \"2022/10/15\",\n  \"ora_part\": \"09:00\",\n  \"ora_arri\": \"10:00\"\n}', 900, 19.99, 2),
-('00004', '{\n  \"data_part\": \"2022/03/04\",\n  \"data_arri\": \"2022/03/05\",\n  \"ora_part\": \"09:00\",\n  \"ora_arri\": \"10:00\"\n}', 1500, 59.99, 2),
-('00005', '{\n  \"data_part\": \"2022/11/04\",\n  \"data_arri\": \"2022/11/04\",\n  \"ora_part\": \"14:00\",\n  \"ora_arri\": \"19:00\"\n}', 1300, 39.99, 1),
-('00006', '{\n  \"data_part\": \"2022/09/01\",\n  \"data_arri\": \"2022/09/01\",\n  \"ora_part\": \"09:25\",\n  \"ora_arri\": \"18:00\"\n}', 1200, 44.99, 2);
+(1, '{\n  \"data_part\":\"2022/10/20\",\n  \"data_arri\": \"2022/10/20\",\n  \"ora_part\": \"06:35\",\n  \"ora_arri\":\"23:00\" \n}', 1300, 39.99, 1),
+(2, '{\n  \"data_part\": \"2022/10/10\",\n  \"data_arri\": \"2022/10/12\",\n  \"ora_part\": \"07:40\",\n  \"ora_arri\": \"20:00\"\n}', 1000, 28.99, 2),
+(3, '{\n  \"data_part\": \"2022/10/15\",\n  \"data_arri\": \"2022/10/15\",\n  \"ora_part\": \"09:00\",\n  \"ora_arri\": \"10:00\"\n}', 900, 19.99, 2),
+(4, '{\n  \"data_part\": \"2022/03/04\",\n  \"data_arri\": \"2022/03/05\",\n  \"ora_part\": \"09:00\",\n  \"ora_arri\": \"10:00\"\n}', 1500, 59.99, 2),
+(5, '{\n  \"data_part\": \"2022/11/04\",\n  \"data_arri\": \"2022/11/04\",\n  \"ora_part\": \"14:00\",\n  \"ora_arri\": \"19:00\"\n}', 1300, 39.99, 1),
+(6, '{\n  \"data_part\": \"2022/09/01\",\n  \"data_arri\": \"2022/09/01\",\n  \"ora_part\": \"09:25\",\n  \"ora_arri\": \"18:00\"\n}', 1200, 44.99, 2);
 
 --
 -- Indici per le tabelle scaricate
@@ -263,10 +263,22 @@ ALTER TABLE `navi`
   MODIFY `codice_nave` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT per la tabella `porto`
+--
+ALTER TABLE `porto`
+  MODIFY `codice_porto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT per la tabella `trasmissione`
 --
 ALTER TABLE `trasmissione`
-  MODIFY `codice_trasmissione` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `codice_trasmissione` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `viaggio`
+--
+ALTER TABLE `viaggio`
+  MODIFY `codice_viaggio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Limiti per le tabelle scaricate
@@ -290,7 +302,7 @@ ALTER TABLE `porto_pa`
 -- Limiti per la tabella `trasmissione`
 --
 ALTER TABLE `trasmissione`
-  ADD CONSTRAINT `trasmissione_ibfk_1` FOREIGN KEY (`codice_viaggio`) REFERENCES `viaggio` (`codice_viaggio`);
+  ADD CONSTRAINT `codice_viaggio` FOREIGN KEY (`codice_viaggio`) REFERENCES `viaggio` (`codice_viaggio`);
 
 --
 -- Limiti per la tabella `viaggio`
