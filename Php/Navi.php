@@ -14,7 +14,7 @@ $web_page = str_replace('<headbar/>', $headbar , $web_page);
 
 $web_page = str_replace('Accedi', 'Esci' , $web_page);
 
-$web_page = str_replace('Accedi', 'Esci' , $web_page);
+$web_page = str_replace('./Auth.php', './Back/Exit.php' , $web_page);
 
 $web_page = str_replace('<contenuto/>', $dashboard , $web_page);
 

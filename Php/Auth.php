@@ -1,4 +1,5 @@
 <?php 
+    session_start();
 
 $web_page = file_get_contents('../Html/Template.html');
 
@@ -10,5 +11,7 @@ $web_page = str_replace('<headbar/>', $headbar , $web_page);
 
 echo str_replace('<contenuto/>', $auth , $web_page);
 
+if(isset($_SESSION["Username"]) && isset($_SESSION["Username"]))
+    header('Location: ./Navi.php');
 
 ?>
