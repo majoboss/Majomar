@@ -20,16 +20,27 @@
         <i class="fa-solid fa-plus fa-fw me-3"></i>
       </button>
       <div style="display: flex; justify-content: center; margin-top: 150px; margin-bottom: 150px;">
-      <form id="formNavi" class="form hide" action="../Php/Back/Insert.php" method="post">
+      <form id="formNavi" class="form hide" action="" method="post">
         <h3 id="formName" style="color: black; margin-bottom: 20px; font-weight: bold;">Aggiungi</h3>
         <div>
             <input class="input_navi" required placeholder="Nome" type="text" name="Nome" >
-            <input class="input_navi" required placeholder="Anno costruzione" name="Anno costruzione" type="number" min="1900" max="2099" step="1" />
+            <input class="input_navi" required placeholder="Anno costruzione" name="Anno_costruzione" type="number" min="1900" max="2099" step="1" />
             <input class="input_navi" required placeholder="Posti" type="number" name="Posti" id="">
             <input class="input_navi" required placeholder="Lunghezza" type="number" name="Lunghezza" id="">
             <input class="input_navi" required placeholder="Stazza" type="number" name="Stazza" id="">
-            <input class="input_navi" required placeholder="Potenza motori" type="number" name="Potenza motori" id="">
+            <input class="input_navi" required placeholder="Potenza motori" type="number" name="Potenza_motori" id="">
+            <input style="display: none;" class="input_navi" name="Key">
             <button type="submit">Invia</button>
+        </div>
+      </form>
+     </div>
+     <div style="display: flex; position: absolute; z-index: 4; top: 40%; left: 40%;">
+      <form id="formNaviCancella" class="formCancella" action="../Php/Back/Navi/Deletenavi.php" method="post">
+        <h5 style="color: black; margin-bottom: 20px; font-weight: bold;">Sei sicuro di voler cancellare questo dato?</h3>
+        <div>
+            <input style="display: none;" id="key" name="Key">
+            <button class="buttonAnnulla" onclick="closeForm()" type="button">Annula</button>
+            <button class="buttonCancella" type="submit">Si</button>
         </div>
       </form>
      </div>

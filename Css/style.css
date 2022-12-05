@@ -295,6 +295,17 @@ a{
     box-shadow: 0px 7px 15px rgba(0, 0, 0, 0.137);
 }
 
+.formCancella{
+    width: 290px;
+    margin: 0;
+    background-color: white;
+    padding: 30px;
+    padding-bottom: 20px;
+    border-radius: 25px;
+    box-shadow: 0px 7px 30px rgba(0, 0, 0, 0.5);
+}
+
+
 .hide{
     display: none;
 }
@@ -322,6 +333,34 @@ a{
     transition: 0.2s;
     box-shadow: 0px 0px 0px black;
     margin-left: 408px;
+
+}
+
+.buttonCancella{
+    font-family: 'Poppins';
+    font-weight: 800;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 110px;
+    background: rgb(255, 95, 95);  
+    border:0;
+    color: white;
+    height: 30px;
+    transition: 0.2s;
+
+}
+
+.buttonAnnulla{
+    font-family: 'Poppins';
+    font-weight: 800;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 110px;
+    background: white;
+    border: 2.3px solid rgb(255, 95, 95);
+    color: rgb(255, 95, 95);
+    height: 30px;
+    transition: 0.2s;
 
 }
 

@@ -50,8 +50,11 @@ while($row=$data_navi->fetch_assoc())
             <td>'.$row["stazza"].'</td>
             <td>'.$row["potenza_motori"].'</td>
             <td>
-            <button type="button" onclick="mod(\''.$row["nome"].'\', '.$row["anno_costruzione"].', '.$row["posti_occupabili"].', '.$row["lunghezza"].', '.$row["stazza"].', '.$row["potenza_motori"].' )" class="btn btn-link btn-sm btn-rounded ">
+            <button type="button" onclick="mod(\''.$row["nome"].'\', '.$row["anno_costruzione"].', '.$row["posti_occupabili"].', '.$row["lunghezza"].', '.$row["stazza"].', '.$row["potenza_motori"].', '.$row["codice_nave"].' )" class="btn btn-link btn-sm btn-rounded ">
                 Edit
+            </button>
+            <button type="button" onclick="delet('.$row["codice_nave"].')" class="btn btn-link btn-sm btn-rounded ">
+                CANC
             </button>
             </td>
         </tr>
