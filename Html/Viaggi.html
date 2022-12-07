@@ -1,0 +1,49 @@
+<div style="padding-top: 100px;">
+    <table class="table align-middle mb-0 bg-white">
+        <thead class="bg-light">
+          <tr>
+            <th>Partenza</th>
+            <th>Arivo</th>
+            <th>Prezzo</th>
+            <th>Peso carico</th>
+            <th>Nave</th>
+            <th>Azioni</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <righe />
+        </tbody>
+      </table>
+      <button class="addButton" onclick="add()">
+        <i class="fa-solid fa-plus fa-fw me-3"></i>
+      </button>
+      <div style="display: flex; justify-content: center; margin-top: 150px; margin-bottom: 150px;">
+      <form id="formViaggi" class="form hide" action="" method="post">
+        <h3 id="formName" style="color: black; margin-bottom: 20px; font-weight: bold;">Aggiungi</h3>
+        <div>
+    
+            <input class="input_viaggi" required type="datetime-local" name="datatime_p" > 
+            <input class="input_viaggi" required type="datetime-local" name="datatime_a" > 
+            <input class="input_viaggi" required placeholder="Posti" type="number" name="Posti" id="">
+            <input class="input_viaggi" required placeholder="Lunghezza" type="number" name="Lunghezza" id="">
+            <input class="input_viaggi" required placeholder="Stazza" type="number" name="Stazza" id="">
+            <input class="input_viaggi" required placeholder="Potenza motori" type="number" name="Potenza_motori" id="">
+            <input style="display: none;" class="input_navi" name="Key">
+            <button type="submit">Invia</button>
+        </div>
+      </form>
+     </div>
+     <div style="display: flex; position: absolute; z-index: 4; top: 40%; left: 40%;">
+      <form id="formViaggiCancella" class="formCancella hide" action="../Php/Back/Viaggi/Deleteviaggi.php" method="post">
+        <h5 style="color: black; margin-bottom: 20px; font-weight: bold;">Sei sicuro di voler cancellare questo dato?</h3>
+        <div>
+            <input style="display: none;" id="key" name="Key">
+            <button class="buttonAnnulla" onclick="closeForm()" type="button">Annula</button>
+            <button class="buttonCancella" type="submit">Si</button>
+        </div>
+      </form>
+     </div>
+</div>
+
+<script src="../JS/formViaggi.js"></script>
