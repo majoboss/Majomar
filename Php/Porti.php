@@ -48,8 +48,11 @@ while($row=$data_porti->fetch_assoc())
                 <td>'.$row["latitudine"].'</td>
                 <td>'.$row["longitudine"].'</td>
                 <td>
-                <button type="button" onclick="mod(\''.$row["nome_porto"].'\', \''.$row["citta"].'\', '.$row["posti_barca"].', '.$row["latitudine"].', '.$row["longitudine"].' )" class="btn btn-link btn-sm btn-rounded ">
-                    Edit
+                <button type="button" onclick="mod(\''.$row["nome_porto"].'\', \''.$row["citta"].'\', '.$row["posti_barca"].', '.$row["latitudine"].', '.$row["longitudine"].','.$row["codice_porto"].')" class="btn btn-link btn-sm btn-rounded ">
+                    <i class="fa-solid fa-pencil"></i>
+                </button>
+                <button type="button" onclick="delet('.$row["codice_porto"].')" class="btn btn-link btn-sm btn-rounded ">
+                    <i class="fa-solid fa-trash"></i>
                 </button>
             </td>
         </tr>
