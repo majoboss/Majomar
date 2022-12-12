@@ -22,7 +22,7 @@
       <form id="formViaggi" class="form hide" action="" method="post">
         <h3 id="formName" style="color: black; margin-bottom: 20px; font-weight: bold;">Aggiungi</h3>
         <div>
-    
+            
             <input class="input_viaggi" required type="datetime-local" name="datatime_p" > 
             <input class="input_viaggi" required type="datetime-local" name="datatime_a" > 
             <input class="input_viaggi" required placeholder="Posti" type="number" name="Posti" id="">
@@ -30,6 +30,9 @@
             <input class="input_viaggi" required placeholder="Stazza" type="number" name="Stazza" id="">
             <input class="input_viaggi" required placeholder="Potenza motori" type="number" name="Potenza_motori" id="">
             <input style="display: none;" class="input_navi" name="Key">
+            <select class="input_viaggi" name="navi">
+              <option value="" disabled selected hidden>Nave</option>
+            </select>
             <button type="submit">Invia</button>
         </div>
       </form>

@@ -24,11 +24,14 @@ $sql_seleziona_porti_partenza = "SELECT * FROM ((viaggio INNER JOIN porto_pa ON 
 $sql_seleziona_nave = "SELECT * FROM viaggio INNER JOIN navi ON codice_navi=codice_nave";
 $sql_seleziona_porti_arrivo = "SELECT * FROM ((viaggio INNER JOIN porto_pa ON viaggio.codice_viaggio=porto_pa.codice_viaggio) INNER JOIN porto ON porto_pa.codice_porto=porto.codice_porto) HAVING tipo='arrivo' ORDER BY porto_pa.codice_viaggio";
 $sql_seleziona_tutto = "SELECT * FROM viaggio ORDER BY codice_viaggio";
+$sql_seleziona_tutto_nave = "SELECT nome,codice_nave FROM navi";
 
 $data_viaggi = $connessione->query($sql_seleziona_tutto);
 $data_porto_p = $connessione->query($sql_seleziona_porti_partenza);
 $data_porto_a = $connessione->query($sql_seleziona_porti_arrivo);
 $data_nave = $connessione->query($sql_seleziona_nave);
+$data_all_navi = $connessione->query($sql_seleziona_tutto_nave);
+
 $formattatore = new IntlDateFormatter('it_IT',IntlDateFormatter::FULL,IntlDateFormatter::FULL,null,null," dd MMM ");
 
 
@@ -41,7 +44,12 @@ while($row=$data_viaggi->fetch_assoc())
     $porto_p=$data_porto_p->fetch_assoc();
     $porto_a=$data_porto_a->fetch_assoc();
     $nave=$data_nave->fetch_assoc();
+    $all_navi = $data_all_navi->fetch_assoc();
 
+    if(isset($nave["nome"]))
+    {}
+    else
+        $nave["nome"] = "";
 
     $data_ora_p_a = json_decode($row["data_ora_p_a"], true);
     
@@ -78,7 +86,7 @@ while($row=$data_viaggi->fetch_assoc())
             <td>'.$row["peso_carico"].'</td>
             <td><p class="fw-bold mb-1">'.$nave["nome"].'</p></td>
             <td>
-                <button type="button" onclick="mod()" class="btn btn-link btn-sm btn-rounded ">
+                <button type="button" onclick="mod(\''.$all_navi["nome"].'\', '.$all_navi["codice_nave"].', '.$complete_part.', '.$complete_arri.', '.$row["prezzo"].','.$row["peso_carico"].','.$row["codice_viaggio"].')" class="btn btn-link btn-sm btn-rounded ">
                     <i class="fa-solid fa-pencil"></i>
                 </button>
                 <button type="button" onclick="delet()" class="btn btn-link btn-sm btn-rounded ">

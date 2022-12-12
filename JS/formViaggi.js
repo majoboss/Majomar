@@ -17,7 +17,7 @@ function add(){
 
 }
 
-function mod(nome, anno_costruzione, posti, lunghezza, stazza, potenza_motori, key){
+function mod(nome, codice_nave, orario_partenza_completo, orario_arrivo_completo, prezzo, peso_carico, codice_viaggio){
 document.getElementById("formViaggi").style.display="inline";
 document.getElementById("formName").innerHTML="Modifica";
 document.getElementById("formViaggi").setAttribute('action', '../Php/Back/Viaggi/Modifyviaggi.php');
